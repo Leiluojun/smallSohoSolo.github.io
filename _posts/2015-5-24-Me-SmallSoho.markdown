@@ -12,4 +12,4 @@ category: life
 
 我没有大牛的技术，希望我能给你带来惊喜，带来分享的快乐
 
-！[小图](img/keyboard.png)
+![小图](img/keyboard.png)

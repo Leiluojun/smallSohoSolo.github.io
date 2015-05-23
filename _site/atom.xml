@@ -7,15 +7,15 @@
         <atom:link href="http://smallsoho.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
-                <title>Test Post</title>
+                <title>我，SmallSoho</title>
                         
                 
-                    <description>&lt;p class=&quot;intro&quot;&gt;&lt;span class=&quot;dropcap&quot;&gt;L&lt;/span&gt;orem ipsum thor smash liege-bastogne-liege landbouwkrediet ombregt krabbe, rouleur derby is for lovers bonk giro gilbert bidon. Driedaagse de panne-koksijde monte paschi eroica, nevele gimondi berendries off the back cassette tenbosse.&lt;/p&gt;
+                    <description>&lt;p&gt;一名平凡的大学生，热爱技术，热爱分享，热爱生活&lt;/p&gt;
 </description>
                 
-                <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://smallsoho.com/2014/12/10/test-post.html</link>
-                <guid isPermaLink="true">http://smallsoho.com/2014/12/10/test-post.html</guid>
+                <pubDate>Sun, 24 May 2015 00:00:00 +0800</pubDate>
+                <link>http://smallsoho.com/2015/05/24/Me-SmallSoho.html</link>
+                <guid isPermaLink="true">http://smallsoho.com/2015/05/24/Me-SmallSoho.html</guid>
             </item>
         
     </channel>
