@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Test Post"
-date:   201-5-20
-category: test
+date:   2015-5-20
+category: life
 tag: test tag
 ---
 
