@@ -22,9 +22,6 @@ redcarpet:
     duoshuo :
       short_name : smallsoho
 
-analytics :
-    provider : custom
-
 navigations:
   - title: About
     class: fa fa-list-ul
