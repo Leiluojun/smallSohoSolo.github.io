@@ -2,7 +2,7 @@
 layout: post
 title:  "Test Post"
 date:   2015-5-20
-category: life
+categray: life
 tag: test tag
 ---
 
