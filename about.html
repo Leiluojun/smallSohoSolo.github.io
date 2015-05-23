@@ -7,44 +7,108 @@ permalink: /about/
 <html>
     {% include head.html %}
     <style type="text/css" media="screen">
-        .wrap1 {
-            margin: 100px;
-            overflow: hidden;
-            position: relative;
-            height: 60%;
-            text-align: center;
-        }
+.wrap1 {
+    margin: 100px;
+    overflow: hidden;
+    position: relative;
+    height: 60%;
+    text-align: center;
+}
         .box {
             text-align: center;
             position: relative;
             display: inline-block;
         }
-        @-webkit-keyframes firstlayer /* Safari 和 Chrome */ {
-            from {top: 200px;}
-            to {top: 0;}
-        }
         img {
             width: 200px;
             margin:0px auto;
             position: relative;
-            top:200px;
         }
-        <!-- #img-1 { -->
-        <!--     -webkit-animation: firstlayer 2s forwards;/* Safari 和 Chrome */ -->
-        <!-- } -->
-        <!-- #img-2 { -->
-        <!--     -webkit-animation: firstlayer 2s 0.3s forwards;/* Safari 和 Chrome */ -->
-        <!-- } -->
-        <!-- #img-3 { -->
-        <!--     -webkit-animation: firstlayer 2s 0.6s forwards;/* Safari 和 Chrome */ -->
-        <!-- } -->
-        <!-- #img-4 { -->
-        <!--     -webkit-animation: firstlayer 2s 0.9s forwards;/* Safari 和 Chrome */ -->
-        <!-- } -->
-        <!-- #img-5 { -->
-        <!--     -webkit-animation: firstlayer 2s 1.2s forwards;/* Safari 和 Chrome */ -->
-        <!-- } -->
+        .wrap1 p{
+            font-size: 30px;
+            color: #6f6f6f;
+        }
+        .wrap1 a {
+            color: #D34848;
+        }
+        .wrap1 li{
+            display: list-item;
+            font-size: 15px;
+        }
+        .wrap1 ul {
+            margin-left: 1.35em;
+        }
+        .img-hidden {
+            opacity: 0;
+        }
+        hr {
+            border:0;
+            background-color:#F4F4F4;
+            height:1px;
+        }
+        #wrap-last{
+            margin-bottom:100px;
+        }
+        .left,
+        .right {
+            text-align: left;
+            margin: 0px 0px;
+            padding: 5% 5% 5% 20%;
+            float: left;
+        }
     </style>
+    
+        <script type="text/javascript" charset="utf-8">
+$(document).ready(
+        function(){
+            var width = $(".box").width()/2 - 100;
+            $('#img-1').css({top:"100px", opacity:"0",left:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({left:"0", opacity:"1"}) ;
+            var width = ($(".box").width() - 200)/4;
+            $('#img-2').css({top:"100px", opacity:"0",left:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({left:"0", opacity:"1"}) ;
+            $('#img-3').css({top:"100px", opacity:"0"})
+                .animate({top:"-=100px",opacity:"1"}, 1000)
+                .animate({left:"0"}) ;
+            var width = ($(".box").width() - 200)/4;
+            $('#img-4').css({top:"100px", opacity:"0",right:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({right:"0", opacity:"1"}) ;
+            var width = $(".box").width()/2 - 100;
+            $('#img-5').css({top:"100px", opacity:"0",right:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({right:"0", opacity:"1"}) ;
+        }
+);
+var skill = 1;
+$(window).scroll(function() {
+    if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*2 && skill == 1){
+        skill = 0;
+        $('#img-6').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 400);
+        $('#img-7').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 600);
+        $('#img-8').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 800);
+        $('#img-9').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 1000);
+    }
+});
+var skill2 = 1;
+$(window).scroll(function() {
+    if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*3 && skill2 == 1){
+        skill2 = 0;
+        $('#img-10').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 2000);
+        $('#img-11').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 2000);
+    }
+});
+    </script>
+    
+    
     <body>
         {% include header.html %}
         <div class="page-content">
@@ -106,5 +170,9 @@ permalink: /about/
             <!-- </div> -->
         </div>
         {% include footer.html %}
+        
+        <script type="text/javascript" charset="utf-8">
+        </script>
+        
     </body>
 </html>
