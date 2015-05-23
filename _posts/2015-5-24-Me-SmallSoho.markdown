@@ -3,8 +3,8 @@ layout: post
 title: "我，SmallSoho"
 date: 2015-5-24
 category: life
+tag: 首页
 ---
-
 
 一名平凡的大学生，热爱技术，热爱分享，热爱Android
 
