@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title></title>
+        <description>Android,Java Leaning</description>      
+        <link>http://smallsoho.com</link>
+        <atom:link href="http://smallsoho.com/feed.xml" rel="self" type="application/rss+xml" />
+        
+            <item>
+                <title>Test Post</title>
+                        
+                
+                    <description>&lt;p class=&quot;intro&quot;&gt;&lt;span class=&quot;dropcap&quot;&gt;L&lt;/span&gt;orem ipsum thor smash liege-bastogne-liege landbouwkrediet ombregt krabbe, rouleur derby is for lovers bonk giro gilbert bidon. Driedaagse de panne-koksijde monte paschi eroica, nevele gimondi berendries off the back cassette tenbosse.&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://smallsoho.com/2014/12/10/test-post.html</link>
+                <guid isPermaLink="true">http://smallsoho.com/2014/12/10/test-post.html</guid>
+            </item>
+        
+    </channel>
+</rss>
