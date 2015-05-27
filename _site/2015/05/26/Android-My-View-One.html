@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Tags</title>
+<title>Android自定义View（一）</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Android,Java Leaning">
-<link rel="canonical" href="http://smallsoho.com/tags/">
+<link rel="canonical" href="http://smallsoho.com/2015/05/26/Android-My-View-One.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,58 +79,87 @@
         <div class="page-content">
             <div class="wrap">
                 <div class="post">
-
     <header class="post-header">
-        <h1>Tags</h1>
+        <h1><a href="/2015/05/26/Android-My-View-One.html">Android自定义View（一）</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-05-26&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Android">Android</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#自定义View">自定义View</a></p>
     </header>
-
     <article class="post-content">
-        <div id='tag_cloud'>
-    
-    <a href="#首页" title="首页" rel="1">首页</a>
-    
-    <a href="#自定义View" title="自定义View" rel="2">自定义View</a>
-    
-</div>
+        <h4>基础知识</h4>
 
-<ul class="listing">
-    
-    <li class="listing-seperator" id="首页">首页</li>
-    
-    <li class="listing-item">
-    <time datetime="2015-05-24">2015-05-24</time>
-    <a href="/2015/05/24/Me-SmallSoho.html" title="我，SmallSoho">我，SmallSoho</a>
-    </li>
-    
-    
-    <li class="listing-seperator" id="自定义View">自定义View</li>
-    
-    <li class="listing-item">
-    <time datetime="2015-05-26">2015-05-26</time>
-    <a href="/2015/05/26/Android-My-View-Two.html" title="Android自定义View（二）">Android自定义View（二）</a>
-    </li>
-    
-    <li class="listing-item">
-    <time datetime="2015-05-26">2015-05-26</time>
-    <a href="/2015/05/26/Android-My-View-One.html" title="Android自定义View（一）">Android自定义View（一）</a>
-    </li>
-    
-    
+<blockquote>
+<p>引用官方文档一段话觉得说的挺好</p>
+</blockquote>
+
+<p>设计良好的类总是相似的。它使用一个好用的接口来封装一个特定的功能，它有效的使用CPU与内存，等等。为了成为一个设计良好的类，自定义的view应该:</p>
+
+<ul>
+<li>遵守Android标准规则。</li>
+<li>提供自定义的风格属性值并能够被Android XML Layout所识别。</li>
+<li>发出可访问的事件。</li>
+<li>能够兼容Android的不同平台。</li>
 </ul>
 
-<script src="/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
-<script language="javascript">
-$.fn.tagcloud.defaults = {
-size: {start: 1, end: 1, unit: 'em'},
-      color: {start: '#f8e0e6', end: '#ff3333'}
-};
+<p>首先Android平台上面的自定义View需要满足以上四种条件，自定义View说白了就是Android系统自带的控件满足不了我们的需求，比如说我们现在来定义一个简单的控件</p>
 
-$(function () {
-        $('#tag_cloud a').tagcloud();
-        });
-</script>
+<p><img src="/img/2015-5-26/sample.png" alt="图片"></p>
+
+<p>就这样一个图片我的思路是用一个Framelayout一个底部图片，上面放一个Linearlayout对齐底部，中间显示文字，然后给这个控件设置一个透明颜色，很简单的一个小控件。</p>
+
+<ul>
+<li>实现自定义底部图片</li>
+<li>实现自定义下部文字</li>
+</ul>
+
+<h4>继承一个View</h4>
+
+<p>Android中所有自定义View都需要继承View，比如说：</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyView</span> <span class="kd">extends</span> <span class="n">View</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">MyView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">MyView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">MyView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">defStyleAttr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">,</span> <span class="n">defStyleAttr</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="c1">//</span>
+<span class="c1">//    public MyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {</span>
+<span class="c1">//        super(context, attrs, defStyleAttr, defStyleRes);</span>
+<span class="c1">//    }</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>前面三个constructor是要求最低API7，最后那个我注释掉的是Android L新出的 0.0</p>
+
+<p>Context：传入的上下文</p>
+
+<h4>实现自定义属性</h4>
+
+<p>AttributeSet：可以通过传入一个attr达到在XML中填写我们自己的属性，例如</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;com.smallsoho.MyImage</span>
+            <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+            <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
+            <span class="na">android:layout_weight=</span><span class="s">&quot;1&quot;</span>
+            <span class="na">myapp:text=</span><span class="s">&quot;逗比&quot;</span>
+            <span class="na">myapp:drawable=</span><span class="s">&quot;@drawable/ic_luncher&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>稍后我会讲解这个这个详细的使用方法。</p>
+
+<h4>其余两个属性</h4>
+
+<p><strong>defStyleAttr</strong>：这个是当前Theme中的一个attribute，是指向style的一个引用，当在layout xml中和style中都没有为View指定属性时，会从Theme中这个attribute指向的Style中查找相应的属性值，这就是defStyle的意思，如果没有指定属性值，就用这个值，所以是默认值，但这个attribute要在Theme中指定，且是指向一个Style的引用，如果这个参数传入0表示不向Theme中搜索默认值</p>
+
+<p><strong>defStyleRes</strong>：这个也是指向一个Style的资源ID，但是仅在defStyleAttr为0或defStyleAttr不为0但Theme中没有为defStyleAttr属性赋值时起作用</p>
 
     </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/05/26/Android-My-View-One"  data-title="Android自定义View（一） - SmallSoho's Blog"></div>
+    </div>
+    <!-- Duoshuo Comment END -->
 
 </div>
 
