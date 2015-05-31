@@ -37,8 +37,8 @@ tag: 自定义View
     </declare-styleable>
 </resources>
 ```
-其中实现了三个东西，一个是图片下面的白色文字，一个是这个文字显示的位置，一个是图片的图片资源
-attr的name跟你定义的哪个名字，在xml中定义的时候就要输入这个名字，format输入你这个属性可以用什么填写。
+其中实现了三个东西，一个是图片下面的白色文字，一个是这个文字显示的位置，一个是图片的图片资源。
+name是在xml中定义的时候就要输入这个名字，format输入你这个属性可以用什么填写。
 
 format参考值：
 
@@ -95,8 +95,27 @@ title = context.getText(resId));
 我们在代码中获取到我们的属性
 
 ```java
-
-未完待续
-
+    try {
+        imageText = a.getString(R.styleable.MyView_imageText);
+        textLocation = a.getInt(R.styleable.MyView_textLocation, -1);
+        imageRes = a.getDrawable(R.styleable.MyView_imageRes);
+    } finally {
+        a.recycle();
+	}
 ```
 
+获取到之后我们就应该继续完善我们的代码
+
+```java
+        //放进布局
+        v = LayoutInflater.from(context).inflate(R.layout.myview, this, true);
+        TextView tv = (TextView) v.findViewById(R.id.text);
+        ImageView im = (ImageView) v.findViewById(R.id.imageRes);
+        tv.setText(imageText);
+        tv.setGravity(textLocation);
+        im.setImageDrawable(imageRes);
+```
+
+这样我们就设置好了各项属性，控件也绑定好了，因为我们是继承自ViewGroup的所以需要重写两个方法一个是onLayout()，一个是onMeasure()
+
+####onLayout()和onMeasure()

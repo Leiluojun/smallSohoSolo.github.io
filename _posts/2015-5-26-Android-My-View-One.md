@@ -20,16 +20,30 @@ tag: 自定义View
 
 ![图片](/img/2015-5-26/sample.png)
 
-就这样一个图片我的思路是用一个Framelayout一个底部图片，上面放一个Linearlayout对齐底部，中间显示文字，然后给这个控件设置一个透明颜色，很简单的一个小控件。
+就这样一个图片上面只有一条直线，我们稍后会写出这个东东　**继承View实现**
+
+- 实现自定义直线颜色
+- 实现自定义直线长度
+
+![图片](/img/2015-5-26/sample2.png)
+
+我们然后实现这个一个东东，用几个布局组合出来一个控件，外面一个RelativeLayout然后来一个Linearlayout与底部对齐并且更改半透明颜色 **继承ViewGroup实现**
 
 - 实现自定义底部图片
 - 实现自定义下部文字
+- 实现自定义文字位置（靠左，靠右，居中）
 
-####继承一个View
-Android中所有自定义View都需要继承View，比如说：
+####View和ViewGroup的区别
+
+首先大家要知道ViewGroup是继承自View的，我们如果想要实现一些用其他控件拼接而成的自定义控件，那么我们应该去写一个控件继承自ViewGroup，这样达到不用自己“画”控件。
+就像第二种，如果我们想要用自己的图案来控制控件（不用图片哦），那么我们就继承View并且重写onDraw()方法，这样我嫩就能自己画了，稍后会对每一个进行详细的讲解
+
+####继承一个ViewGroup
+
+Android中所有自定义View都需要继承View或者继承ViewGroup（有时候你会看见一个控件继承LinearLayout，LinearLayout就是一个ViewGroup），比如说：
 
 ```java
-public class MyView extends View {
+public class MyView extends View //继承ViewGroup一样 {
 
     public MyView(Context context) {
         super(context);
@@ -73,3 +87,6 @@ AttributeSet：可以通过传入一个attr达到在XML中填写我们自己的�
 **defStyleAttr**：这个是当前Theme中的一个attribute，是指向style的一个引用，当在layout xml中和style中都没有为View指定属性时，会从Theme中这个attribute指向的Style中查找相应的属性值，这就是defStyle的意思，如果没有指定属性值，就用这个值，所以是默认值，但这个attribute要在Theme中指定，且是指向一个Style的引用，如果这个参数传入0表示不向Theme中搜索默认值
 
 **defStyleRes**：这个也是指向一个Style的资源ID，但是仅在defStyleAttr为0或defStyleAttr不为0但Theme中没有为defStyleAttr属性赋值时起作用
+
+####下一节
+我们首先讲解简单好用的继承一个ViewGroup实现我们的第二个图片控件
