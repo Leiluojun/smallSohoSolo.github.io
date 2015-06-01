@@ -14,4 +14,5 @@ tag: 首页
 
 我的推特：[https://twitter.com/smallSohoSolo](https://twitter.com/smallSohoSolo)
 
+我的CSDN博客：[http://blog.csdn.net/u012935550/article/details/39120151](http://blog.csdn.net/u012935550/article/details/39120151)
 ![小图](/img/keyboard.png)
