@@ -116,6 +116,47 @@ title = context.getText(resId));
         im.setImageDrawable(imageRes);
 ```
 
-这样我们就设置好了各项属性，控件也绑定好了，因为我们是继承自ViewGroup的所以需要重写两个方法一个是onLayout()，一个是onMeasure()
+这样我们就设置好了各项属性，控件也绑定好了，因为我们是继承自ViewGroup的所以需要重写方法onLayout(),此方法比较高级，在这里我们不做过多讲解，直接继承LinearLayout即可
 
-####onLayout()和onMeasure()
+整个自定义View类就在这里
+
+```java
+public class MyView extends LinearLayout {
+
+    private View v;
+    private String imageText = null;
+    private int textLocation = -1;
+    private Drawable imageRes = null;
+
+    public MyView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        //获取数据
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MyView, 0, 0);
+
+        try {
+            imageText = a.getString(R.styleable.MyView_imageText);
+            textLocation = a.getInt(R.styleable.MyView_textLocation, -1);
+            imageRes = a.getDrawable(R.styleable.MyView_imageRes);
+        } finally {
+            a.recycle();
+        }
+
+        Log.d("ceshi ", imageText + textLocation + imageRes);
+
+        //放进布局
+        v = LayoutInflater.from(context).inflate(R.layout.myview, this, true);
+        TextView tv = (TextView) v.findViewById(R.id.text);
+        ImageView im = (ImageView) v.findViewById(R.id.imageRes);
+        tv.setText(imageText);
+        tv.setGravity(textLocation);
+        im.setImageDrawable(imageRes);
+    }
+}
+
+```
+
+放进布局即可使用
+
+
+
+
