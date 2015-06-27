@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Archive</title>
+<title>Android自定义View（三）</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Android,Java Leaning">
-<link rel="canonical" href="http://smallsoho.com/archive/">
+<link rel="canonical" href="http://smallsoho.com/2015/06/01/Android-My-View-Three.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,58 +79,65 @@
         <div class="page-content">
             <div class="wrap">
                 <div class="post">
-
     <header class="post-header">
-        <h1>Archive</h1>
+        <h1><a href="/2015/06/01/Android-My-View-Three.html">Android自定义View（三）</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-06-01&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Android">Android</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#自定义View">自定义View</a></p>
     </header>
+    <article class="post-content">
+        <h4>前言</h4>
 
-    <article class="category">
-        <ul class="posts">
-    
-    
-    
-    
-    <li class="listing-seperator">2015-06</li>
-    
-    <li class="listing-item">
-    <time datetime="2015-06-27">2015-06-27</time>
-    <a href="/2015/06/27/Android-Widget-One.html" title="Android Widget详解（一）">Android Widget详解（一）</a>
-    </li>
-    
-    
-    
-    <li class="listing-item">
-    <time datetime="2015-06-01">2015-06-01</time>
-    <a href="/2015/06/01/Android-My-View-Three.html" title="Android自定义View（三）">Android自定义View（三）</a>
-    </li>
-    
-    
-    
-    
-    <li class="listing-seperator">2015-05</li>
-    
-    <li class="listing-item">
-    <time datetime="2015-05-26">2015-05-26</time>
-    <a href="/2015/05/26/Android-My-View-Two.html" title="Android自定义View（二）">Android自定义View（二）</a>
-    </li>
-    
-    
-    
-    <li class="listing-item">
-    <time datetime="2015-05-26">2015-05-26</time>
-    <a href="/2015/05/26/Android-My-View-One.html" title="Android自定义View（一）">Android自定义View（一）</a>
-    </li>
-    
-    
-    
-    <li class="listing-item">
-    <time datetime="2015-05-24">2015-05-24</time>
-    <a href="/2015/05/24/Me-SmallSoho.html" title="我，SmallSoho">我，SmallSoho</a>
-    </li>
-    
+<p>上一篇博文我们继承了Linearlayout来达到简单的组合控件，那么这篇讲解一下真正的继承ViewGroup和继承View的完全自定义View使用方法。
+这跟三个函数有关，需要我们重写onDraw(),onMeasure(),onLayout()三个函数在类中，以达到我们的目的，首先我们先做试图上面的一个自定义，在下一篇中我们将会讲解对手势的控制，有木有好激动！～！～～！</p>
+
+<h4>流程和三个函数的功能</h4>
+
+<p>Android绘制View会按照一个流程来做</p>
+
+<p><strong>onMeasure() --&gt; onLayout --&gt; onDraw()</strong></p>
+
+<ul>
+<li>View本身大小多少，这由onMeasure()决定</li>
+<li>View在ViewGroup中的位置如何，这由onLayout()决定</li>
+<li>绘制View，onDraw()定义了如何绘制这个View。</li>
 </ul>
 
+<p>接下来按照这个流程进行讲解</p>
+
+<h4>onMeasure()</h4>
+
+<blockquote>
+<p>引用郭霖大神的一段话（我会修改的更加通俗易懂一点） <a href="http://blog.csdn.net/guolin_blog/article/details/16330267">http://blog.csdn.net/guolin_blog/article/details/16330267</a>
+ps：大神博客很好，推荐大家看看</p>
+</blockquote>
+
+<p>measure是测量的意思，那么onMeasure()方法顾名思义就是用于测量视图的大小的。View系统的绘制流程会从ViewRoot的performTraversals()方法中开始，在其内部调用View的measure()方法。measure()方法接收两个参数，widthMeasureSpec和heightMeasureSpec，这两个值分别用于确定视图的宽度和高度的规格和大小。</p>
+
+<p>MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类型，如下所示：</p>
+
+<p><strong>1.EXACTLY</strong></p>
+
+<p>表示父视图希望子视图的大小应该是由specSize的值来决定的，系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+
+<p><strong>2.AT_MOST</strong></p>
+
+<p>表示子视图最多只能是specSize中指定的大小，开发人员应该尽可能小得去设置这个视图，并且保证不会超过specSize。系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+
+<p><strong>3.UNSPECIFIED</strong></p>
+
+<p>表示开发人员可以将视图按照自己的意愿设置成任意的大小，没有任何限制。这种情况比较少见，不太会用到。</p>
+
+<h4>onLayout()</h4>
+
+<h4>onDraw()</h4>
+
+<h4>总结</h4>
+
     </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/06/01/Android-My-View-Three"  data-title="Android自定义View（三） - SmallSoho's Blog"></div>
+    </div>
+    <!-- Duoshuo Comment END -->
 
 </div>
 

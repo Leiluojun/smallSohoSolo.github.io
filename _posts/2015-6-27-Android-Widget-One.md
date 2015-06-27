@@ -57,6 +57,7 @@ widget是安卓较苹果特有的桌面小控件，Widget可以让我们在主�
 ####写一个XML布局
 配置文件创建完成了，我们再给widget创建一个布局文件，这样就可以使用一个Widget了
 我们先使用一个简单的布局，里面只放一个TextView，稍后的教程中会写使用复杂布局。
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -158,9 +159,11 @@ onUpdate中的参数context为上下文不解释，第二个为当前app的widge
 ####效果图
 
 当我手指拖动的时候显示在previewImage中设置的图片
+
 ![图片](/img/2015-6-27/xiaoguo1.png)
 
 放上之后的效果，期间会有一个配置Activity
+
 ![图片](/img/2015-6-27/xiaoguo2.png)
 
 ####下一章

@@ -190,9 +190,42 @@ name是在xml中定义的时候就要输入这个名字，format输入你这个�
         <span class="n">tv</span><span class="o">.</span><span class="na">setGravity</span><span class="o">(</span><span class="n">textLocation</span><span class="o">);</span>
         <span class="n">im</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">imageRes</span><span class="o">);</span>
 </code></pre></div>
-<p>这样我们就设置好了各项属性，控件也绑定好了，因为我们是继承自ViewGroup的所以需要重写两个方法一个是onLayout()，一个是onMeasure()</p>
+<p>这样我们就设置好了各项属性，控件也绑定好了，因为我们是继承自ViewGroup的所以需要重写方法onLayout(),此方法比较高级，在这里我们不做过多讲解，直接继承LinearLayout即可</p>
 
-<h4>onLayout()和onMeasure()</h4>
+<p>整个自定义View类就在这里</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyView</span> <span class="kd">extends</span> <span class="n">LinearLayout</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">View</span> <span class="n">v</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">imageText</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">textLocation</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Drawable</span> <span class="n">imageRes</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MyView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+        <span class="c1">//获取数据</span>
+        <span class="n">TypedArray</span> <span class="n">a</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getTheme</span><span class="o">().</span><span class="na">obtainStyledAttributes</span><span class="o">(</span><span class="n">attrs</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">styleable</span><span class="o">.</span><span class="na">MyView</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">imageText</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">styleable</span><span class="o">.</span><span class="na">MyView_imageText</span><span class="o">);</span>
+            <span class="n">textLocation</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">styleable</span><span class="o">.</span><span class="na">MyView_textLocation</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">imageRes</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">styleable</span><span class="o">.</span><span class="na">MyView_imageRes</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">recycle</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&quot;ceshi &quot;</span><span class="o">,</span> <span class="n">imageText</span> <span class="o">+</span> <span class="n">textLocation</span> <span class="o">+</span> <span class="n">imageRes</span><span class="o">);</span>
+
+        <span class="c1">//放进布局</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">LayoutInflater</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">myview</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">TextView</span> <span class="n">tv</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">v</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>
+        <span class="n">ImageView</span> <span class="n">im</span> <span class="o">=</span> <span class="o">(</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">v</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageRes</span><span class="o">);</span>
+        <span class="n">tv</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">imageText</span><span class="o">);</span>
+        <span class="n">tv</span><span class="o">.</span><span class="na">setGravity</span><span class="o">(</span><span class="n">textLocation</span><span class="o">);</span>
+        <span class="n">im</span><span class="o">.</span><span class="na">setImageDrawable</span><span class="o">(</span><span class="n">imageRes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>放进布局即可使用</p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
