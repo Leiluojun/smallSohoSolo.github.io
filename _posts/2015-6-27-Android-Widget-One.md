@@ -169,3 +169,5 @@ onUpdate中的参数context为上下文不解释，第二个为当前app的widge
 ####下一章
 
 下一章实现复杂布局和对配置Activity进行详细的讲解
+
+[代码点击下载](https://github.com/smallSohoSolo/smallSohoSolo.github.io/blob/master/code/MyBlogWidget_One.zip?raw=true)
