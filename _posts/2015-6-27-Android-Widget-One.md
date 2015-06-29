@@ -135,8 +135,8 @@ onUpdate中的参数context为上下文不解释，第二个为当前app的widge
 ####Widget中的那些关系
 
 **AppWidgetManager**:管理整个app中的所有widget的工具（每实例化一个widget都算一个widget），每个widget通过自己的widgetId来区别
-**AppWidgetProvider**:有一类的widget通过这个provider生成的，一个provider用来控制一类的widget，理论上一个widget的更改应该同步所有的相同的实例。
-**AppWidgetProviderInfo**:每一个info对象对应一个widget的xml，可以通过这个info对象来修改这类widget的配置xml数据
+**AppWidgetProvider**:每一个widget都有一个属于自己的AppWidgetProvider,但是在一个AppWidgetProvider中可以响应其他的相同种类的widget，比如说可以用appWidgetManager.update()第一个参数传字符串就可以同步更新其他的所有的同类Widget,并且再onEnabled中可以响应第一次创建的时候，这就是期间有联系。
+**AppWidgetProviderInfo**:所有一类的widget复用一个AppWidgetProviderInfo
 **widgetId**:每一个你生成的widget都有自己的id号码，比如说你再屏幕上放两个一样的控件，但是他们的id是不同的
 
 下面上结构图
