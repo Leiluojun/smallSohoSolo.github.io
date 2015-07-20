@@ -98,6 +98,8 @@ HandlerThread给我们提供了一个可以在handler中处理耗时操作的可
 
 假设A代表一个耗时操作，B代表另外一个耗时操作   B需要获取A的结果来继续执行
 
+
+
 ```java
 
         HandlerThread handlerThread = new HandlerThread("longlongtest");
