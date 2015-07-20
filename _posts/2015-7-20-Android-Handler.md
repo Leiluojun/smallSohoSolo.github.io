@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Widget详解（一）"
+title: "Android Handler的一点思考"
 date: 2015-7-20
 category: Android
 tag: Handler
