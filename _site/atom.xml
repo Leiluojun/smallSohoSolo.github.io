@@ -7,6 +7,18 @@
         <atom:link href="http://smallsoho.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Android Handler的一点思考</title>
+                        
+                
+                    <description>&lt;h2&gt;Handler的一点思考&lt;/h2&gt;
+</description>
+                
+                <pubDate>Mon, 20 Jul 2015 00:00:00 +0800</pubDate>
+                <link>http://smallsoho.com/2015/07/20/Android-Handler.html</link>
+                <guid isPermaLink="true">http://smallsoho.com/2015/07/20/Android-Handler.html</guid>
+            </item>
+        
+            <item>
                 <title>Android Widget详解（一）</title>
                         
                 
@@ -23,9 +35,6 @@
                         
                 
                     <description>&lt;h4&gt;前言&lt;/h4&gt;
-
-&lt;p&gt;上一篇博文我们继承了Linearlayout来达到简单的组合控件，那么这篇讲解一下真正的继承ViewGroup和继承View的完全自定义View使用方法。
-这跟三个函数有关，需要我们重写onDraw(),onMeasure(),onLayout()三个函数在类中，以达到我们的目的，首先我们先做试图上面的一个自定义，在下一篇中我们将会讲解对手势的控制，有木有好激动！～！～～！&lt;/p&gt;
 </description>
                 
                 <pubDate>Mon, 01 Jun 2015 00:00:00 +0800</pubDate>

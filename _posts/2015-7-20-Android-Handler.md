@@ -53,6 +53,8 @@ Looper是隐含在其中的
 HandlerThread是Thread的子类，其中自带一个Looper和MessageQueue，用来达到按次处理消息的功能，
 我们知道不可以在主线程中做耗时操作，如果直接在默认的handler的handlermessge方法中Thread.sleep（5000） 会使卡顿UI线程
 HandlerThread给我们提供了一个可以在handler中处理耗时操作的可能。
+
+
 ```java
         HandlerThread handlerThread = new HandlerThread("longlongtest");
         handlerThread.start();
