@@ -7,6 +7,18 @@
         <atom:link href="http://smallsoho.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Android Handler使用Palette获取图片主色调</title>
+                        
+                
+                    <description>&lt;h2&gt;Palette简介&lt;/h2&gt;
+</description>
+                
+                <pubDate>Wed, 22 Jul 2015 00:00:00 +0800</pubDate>
+                <link>http://smallsoho.com/2015/07/22/Android-Palette.html</link>
+                <guid isPermaLink="true">http://smallsoho.com/2015/07/22/Android-Palette.html</guid>
+            </item>
+        
+            <item>
                 <title>Android Handler的一点思考</title>
                         
                 
