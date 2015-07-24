@@ -38,6 +38,28 @@ tag: 自定义View
 首先大家要知道ViewGroup是继承自View的，我们如果想要实现一些用其他控件拼接而成的自定义控件，那么我们应该去写一个控件继承自ViewGroup，这样达到不用自己“画”控件。
 就像第二种，如果我们想要用自己的图案来控制控件（不用图片哦），那么我们就继承View并且重写onDraw()方法，这样我嫩就能自己画了，稍后会对每一个进行详细的讲解
 
+####一个View中都有那些方法
+
+
+分类     | 方法|   描述   |
+-------- | ----|--------|
+创建 	   |Constructors		   |View中有两种类型的构造方法，一种是在代码中构建View，另一种是填充布局文件构建View，第二种构造方法要解析并应用布局文件中定义的任何属性。
+   		|onFinishInflate()		|在来自于XML的View和它所有的子节点填充之后被调用。
+Layout 	| onMeasure				|调用该方法来确定view及它所有子节点需要的尺寸
+		|onLayout				|当view需要为它的所有子节点指定大小和布局时，此方法被调用
+        |onSizeChanged			|当这个view的大小发生变化时，此方法被调用
+Drawing |onDraw					|当view渲染它的内容时被调用
+事件处理  |onKeyDown|Called when a new key event occurs.
+		|onKeyUp				|Called when a key up event occurs.
+    	|onTrackballEvent		|当轨迹球动作事件发生时被调用
+    	|onTouchEvent			|Called when a touch screen motion event occurs.
+Focus	|onFocusChanged			|Called when the view gains or loses focus.
+		|onWindowFocusChanged 	|Called when the window containing the view gains or loses focus.
+Attaching|onAttachedToWindow	|Called when the view is attached to a window.
+		|onDetachedFromWindow	|Called when the view is detached from its window.
+        |onWindowVisibilityChanged|Called when the visibility of the window containing the view has changed.
+        
+
 ####继承一个ViewGroup
 
 Android中所有自定义View都需要继承View或者继承ViewGroup（有时候你会看见一个控件继承LinearLayout，LinearLayout就是一个ViewGroup），比如说：
