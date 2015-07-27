@@ -94,7 +94,7 @@
 
 <p>handler中存在一个MessageQueue（消息队列）
 Looper是一只“手”，这只手无限循环MessageQueue从中拿出来要处理的message，然后交给handler处理，默认生成的handler中的looper是主线程也就是ui线程的looper，所以默认生成的handler是可以处理更新ui的操作的。</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">()</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Handler</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
                 <span class="kd">super</span><span class="o">.</span><span class="na">handleMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
@@ -127,10 +127,10 @@ Looper是隐含在其中的
 <p>HandlerThread是Thread的子类，其中自带一个Looper和MessageQueue，用来达到按次处理消息的功能，
 我们知道不可以在主线程中做耗时操作，如果直接在默认的handler的handlermessge方法中Thread.sleep（5000） 会使卡顿UI线程
 HandlerThread给我们提供了一个可以在handler中处理耗时操作的可能。</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">HandlerThread</span> <span class="n">handlerThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HandlerThread</span><span class="o">(</span><span class="s">&quot;longlongtest&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">HandlerThread</span> <span class="n">handlerThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HandlerThread</span><span class="o">(</span><span class="s">&quot;longlongtest&quot;</span><span class="o">);</span>
         <span class="n">handlerThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
         <span class="c1">//此处必须start，不然无法生成子线程的looper</span>
-        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">(</span><span class="n">handlerThread</span><span class="o">.</span><span class="na">getLooper</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Handler</span><span class="o">(</span><span class="n">handlerThread</span><span class="o">.</span><span class="na">getLooper</span><span class="o">())</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
                 <span class="kd">super</span><span class="o">.</span><span class="na">handleMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
@@ -167,10 +167,10 @@ HandlerThread给我们提供了一个可以在handler中处理耗时操作的可
 <p>在Android的多线程操作中，如果两个子线程的处理有交集，也就是简单的生产者交易者问题，第一个线程不完成，第二个线程没有第一个线程的结果无法继续执行下去，那么此时我们使用HandlerThread就可以实现了</p>
 
 <p>假设A代表一个耗时操作，B代表另外一个耗时操作   B需要获取A的结果来继续执行</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">HandlerThread</span> <span class="n">handlerThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HandlerThread</span><span class="o">(</span><span class="s">&quot;longlongtest&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">HandlerThread</span> <span class="n">handlerThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HandlerThread</span><span class="o">(</span><span class="s">&quot;longlongtest&quot;</span><span class="o">);</span>
         <span class="n">handlerThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 
-        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="o">(</span><span class="n">handlerThread</span><span class="o">.</span><span class="na">getLooper</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Handler</span><span class="o">(</span><span class="n">handlerThread</span><span class="o">.</span><span class="na">getLooper</span><span class="o">())</span> <span class="o">{</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
                 <span class="kd">super</span><span class="o">.</span><span class="na">handleMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
