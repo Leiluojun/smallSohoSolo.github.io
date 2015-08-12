@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "我，SmallSoho"
+title: "我，SmallSohoSolo"
 date: 2015-5-24
 category: life
 tag: 首页
@@ -13,7 +13,10 @@ tag: 首页
 
 勿忘初心，方得始终
 
-我的推特：[https://twitter.com/smallSohoSolo](https://twitter.com/smallSohoSolo)
+我的微博：[http://weibo.com/234124595](http://weibo.com/234124595)
 
 我的CSDN博客：[http://blog.csdn.net/u012935550](http://blog.csdn.net/u012935550)
+
+我的知乎：[http://zhihu.com/people/smallsoho](http://zhihu.com/people/smallsoho)
+
 ![小图](/img/keyboard.png)
