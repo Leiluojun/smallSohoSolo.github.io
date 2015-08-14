@@ -30,6 +30,7 @@ widget是安卓较苹果特有的桌面小控件，Widget可以让我们在主�
 ####创建一个Widget配置文件
 
 ```xml
+
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialLayout="@layout/my_widget"
@@ -41,10 +42,12 @@ widget是安卓较苹果特有的桌面小控件，Widget可以让我们在主�
     android:configure="com.longlong.myblogwidget.ConfigureActivity"
     android:widgetCategory="home_screen|keyguard">
 </appwidget-provider>
+
 ```
 在res/xml目录下写上这么一个Widget的配置文件（一个Widget对应一个配置文件）
 这个是一个基本常用的配置文件，其中包含了大部分需要设置的属性，其余属性大家自行文档查询，不太常用就不讲解了。
 其中对每样属性分别进行解释
+
 - **initialLayout**:创建Widget时候对应的widget布局文件（稍后讲解怎么创建）
 - **minHeight**：控件最小高度，也就是高度占用几个格子（计算公式：结果 = 70dp * 格子数 - 30dp 例如 两个格子的结果为 70 * 2 - 30 = 110）
 - **minWidth**：控件最小宽度，也就是宽度占用几个格子（计算公式同上）
@@ -52,11 +55,13 @@ widget是安卓较苹果特有的桌面小控件，Widget可以让我们在主�
 - **resizeMode**:Widget的大小是可以调整的，所以通过使用horizontal和vertical来设置水平和垂直方向可以调整大小，设置成none表示不能调整大小
 - **updatePeriodMillis**：控件的更新频率，一般设置成为24小时，这里是毫秒,当你设置成小于30分钟时，系统会为你自动设置成30分钟，理论上越大越好，我们更新widget并不通过这个更新，如果设备正在休眠，那么更新时候设备会被唤醒
 如果你需要比较频繁的更新，或者你不希望在设备休眠的时候执行更新，那么可以将updatePeriodMillis 设为 0，然后在onReeiver方法中实时更新widget。
+
 - **widgetCategory**:设置widget可以出现的位置，在这里我们设置可以在主屏幕和键盘锁的位置出现
 
 ####写一个XML布局
 配置文件创建完成了，我们再给widget创建一个布局文件，这样就可以使用一个Widget了
 我们先使用一个简单的布局，里面只放一个TextView，稍后的教程中会写使用复杂布局。
+
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
