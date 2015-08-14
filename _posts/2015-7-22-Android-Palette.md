@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Handler使用Palette获取图片主色调"
+title: "Android使用Palette获取图片主色调"
 date: 2015-7-22
 category: Android
 tag: Palette
