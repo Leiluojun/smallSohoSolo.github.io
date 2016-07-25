@@ -123,15 +123,18 @@
 </code></pre></div>
 <p>在res/xml目录下写上这么一个Widget的配置文件（一个Widget对应一个配置文件）
 这个是一个基本常用的配置文件，其中包含了大部分需要设置的属性，其余属性大家自行文档查询，不太常用就不讲解了。
-其中对每样属性分别进行解释
-- <strong>initialLayout</strong>:创建Widget时候对应的widget布局文件（稍后讲解怎么创建）
-- <strong>minHeight</strong>：控件最小高度，也就是高度占用几个格子（计算公式：结果 = 70dp * 格子数 - 30dp 例如 两个格子的结果为 70 * 2 - 30 = 110）
-- <strong>minWidth</strong>：控件最小宽度，也就是宽度占用几个格子（计算公式同上）
-- <strong>previewImage</strong>:控件在选择的时候有个预览图，这个预览图的资源id
-- <strong>resizeMode</strong>:Widget的大小是可以调整的，所以通过使用horizontal和vertical来设置水平和垂直方向可以调整大小，设置成none表示不能调整大小
-- <strong>updatePeriodMillis</strong>：控件的更新频率，一般设置成为24小时，这里是毫秒,当你设置成小于30分钟时，系统会为你自动设置成30分钟，理论上越大越好，我们更新widget并不通过这个更新，如果设备正在休眠，那么更新时候设备会被唤醒
-如果你需要比较频繁的更新，或者你不希望在设备休眠的时候执行更新，那么可以将updatePeriodMillis 设为 0，然后在onReeiver方法中实时更新widget。
-- <strong>widgetCategory</strong>:设置widget可以出现的位置，在这里我们设置可以在主屏幕和键盘锁的位置出现</p>
+其中对每样属性分别进行解释</p>
+
+<ul>
+<li><strong>initialLayout</strong>:创建Widget时候对应的widget布局文件（稍后讲解怎么创建）</li>
+<li><strong>minHeight</strong>：控件最小高度，也就是高度占用几个格子（计算公式：结果 = 70dp * 格子数 - 30dp 例如 两个格子的结果为 70 * 2 - 30 = 110）</li>
+<li><strong>minWidth</strong>：控件最小宽度，也就是宽度占用几个格子（计算公式同上）</li>
+<li><strong>previewImage</strong>:控件在选择的时候有个预览图，这个预览图的资源id</li>
+<li><strong>resizeMode</strong>:Widget的大小是可以调整的，所以通过使用horizontal和vertical来设置水平和垂直方向可以调整大小，设置成none表示不能调整大小</li>
+<li><p><strong>updatePeriodMillis</strong>：控件的更新频率，一般设置成为24小时，这里是毫秒,当你设置成小于30分钟时，系统会为你自动设置成30分钟，理论上越大越好，我们更新widget并不通过这个更新，如果设备正在休眠，那么更新时候设备会被唤醒
+如果你需要比较频繁的更新，或者你不希望在设备休眠的时候执行更新，那么可以将updatePeriodMillis 设为 0，然后在onReeiver方法中实时更新widget。</p></li>
+<li><p><strong>widgetCategory</strong>:设置widget可以出现的位置，在这里我们设置可以在主屏幕和键盘锁的位置出现</p></li>
+</ul>
 
 <h4>写一个XML布局</h4>
 

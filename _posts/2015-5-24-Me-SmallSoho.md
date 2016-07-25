@@ -4,7 +4,6 @@ title: "我，SmallSohoSolo"
 date: 2015-5-24
 category: life
 tag: 首页
-
 ---
 
 一名平凡的大学生，热爱技术，热爱分享，热爱Android
@@ -13,10 +12,12 @@ tag: 首页
 
 勿忘初心，方得始终
 
-我的微博：[http://weibo.com/234124595](http://weibo.com/234124595)
+微博：[http://weibo.com/234124595](http://weibo.com/234124595)
 
-我的CSDN博客：[http://blog.csdn.net/u012935550](http://blog.csdn.net/u012935550)
+CSDN博客：[http://blog.csdn.net/u012935550](http://blog.csdn.net/u012935550)
 
-我的知乎：[http://zhihu.com/people/smallsoho](http://zhihu.com/people/smallsoho)
+知乎：[http://zhihu.com/people/smallsoho](http://zhihu.com/people/smallsoho)
+
+
 
 ![小图](/img/keyboard.png)

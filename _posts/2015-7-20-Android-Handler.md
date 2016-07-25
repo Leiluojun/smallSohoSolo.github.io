@@ -6,8 +6,6 @@ category: Android
 tag: Handler
 ---
 
-##Handler的一点思考
-
 ####什么是handler
 
 handler是Android给我们提供的一种消息接受机制，通过handler可以实现在子线程中更新UI，默认生成的handler是运行在ui线程中的。

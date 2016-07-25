@@ -6,7 +6,7 @@ category: Android
 tag: Palette
 ---
 
-##Palette简介
+####Palette简介
 
 Palette是Android中的调色板，我们可以通过传递一个Bitmap来获取一个颜色列表，可以通过类中封装的分析算法来获取其中的
 
