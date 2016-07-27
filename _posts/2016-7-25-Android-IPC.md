@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android IPC终极指南（一）"
+title: "Android IPC终极指南（一、基础知识）"
 date: 2016-7-25
 category: Android
 tag: IPC
@@ -204,3 +204,7 @@ public class User implements Parcelable {
 
 其中Book也是一个继承了Parcelable的类，他同样可以被序列化。describeContents在通常情况下返回的是0，仅当当前对象中存在文件描述符中他才会返回1，别的方法大家自行脑补 0.0
 我就不告诉你~~
+
+#### How to choose？
+
+Serializable是Java中的序列化接口，他在序列化和反序列化中都需要大量的IO操作，虽然使用简单，但是开销很大，而Parcelable是Android推荐的方式，效率很高，Parcelable主要用在内存的序列化上，如果需要序列化到文件的话，Parcelable也是可以的，但是过程会很复杂，所以这时建议大家使用Serializable来进行序列化。

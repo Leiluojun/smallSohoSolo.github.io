@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android自定义View（三）"
-date: 2015-6-1
+date: 2015-5-28
 category: Android
 tag: 自定义View
 ---

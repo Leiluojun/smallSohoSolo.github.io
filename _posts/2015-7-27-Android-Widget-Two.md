@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android Widget详解（二）"
-date: 2015-7-27
+date: 2015-6-30
 category: Android
 tag: widget
 ---
