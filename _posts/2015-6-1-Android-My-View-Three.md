@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android自定义View（三）"
+title: "Android自定义View（三）(暂未完成)"
 date: 2015-5-28
 category: Android
 tag: 自定义View
