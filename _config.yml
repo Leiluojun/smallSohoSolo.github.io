@@ -12,9 +12,11 @@ author: "smallSohoSolo"
 # permalink: date
 
 highlighter: pygments
-markdown: redcarpet
-redcarpet:
-  extensions: [fenced_code_blocks,no_intra_emphasis,strikethrough,no_intra_emphasis,autolink,tables]
+markdown: kramdown
+kramdown:
+  input:          GFM
+  auto_ids:       true
+  auto_id_prefix: 'id-'
 
 #duoshuo
   comments :
