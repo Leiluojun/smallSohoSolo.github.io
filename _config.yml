@@ -11,7 +11,7 @@ author: "smallSohoSolo"
 # Build settings
 # permalink: date
 
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 kramdown:
   input:          GFM
