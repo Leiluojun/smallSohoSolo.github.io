@@ -1,12 +1,12 @@
 # Site settings
-title: SmallSoho's Blog
-email: b3069741@126.com
+title: Yuhj's Blog
+email: lin5667181@163.com
 description: "Android,Java Leaning"
 permalink: /:year/:month/:day/:title.html
 baseurl: ""
-url: "http://smallsoho.com"
-atom-baseurl: "http://smallsoho.com"
-author: "smallSohoSolo"
+url: "http://yuh.blog.com"
+atom-baseurl: "http://yuhj.blog.com"
+author: "yuhj"
 
 # Build settings
 # permalink: date
